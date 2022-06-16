@@ -16,11 +16,16 @@ MongoClient.connect(url, { useUnifiedTopology: true })
   })
   .catch((err) => console.log(err));
 
+app.set('vew engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 app.get('/', (request, response) => {
-  response.sendFile(`${__dirname}/index.html`);
+  // response.sendFile(`${__dirname}/index.html`);
+  db.collection('teas').find().toArray()
+    .then((results) => response.render('index.ejs', { teas: results }))
+    .catch((err) => console.log(err));
 });
 
 app.post('/teas', (request, response) => {
