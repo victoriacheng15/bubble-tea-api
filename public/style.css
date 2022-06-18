@@ -53,9 +53,13 @@ body {
 }
 
 .container {
-  width: min(90%, 1000px);
+  margin: 0 auto;
+  width: min(90%, 900px);
+}
+
+.lists {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 36px;
 }
 
@@ -82,9 +86,25 @@ body {
   background: lightgreen;
   border-radius: 5px;
   text-transform: capitalize;
-  cursor: pointer;
+  cursor: move;
 }
 
 .invisible {
   display: none;
+}
+
+.mix-match {
+  padding: 24px;
+  background: lightgreen;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-box {
+  width: 80%;
+  height: 100px;
+  padding: 16px;
+  background: lightblue;
 }

@@ -6,30 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bubble Tea API</title>
     <link rel="stylesheet" href="/style.css" />
+    <script src="/main.js" defer></script>
   </head>
   <body>
     <h1>The home of Bubble Tea API</h1>
-    <section class="container">
+    <section class="container lists">
       <div class="column">
         <h2>Teas</h2>
-        <ul>
-          <% for(tea of teas) {%> <% if(tea.type === "tea") {%>
-          <li class="item" draggable="true"><%= tea.name %></li>
-          <% } %> <% } %>
+        <ul class="list">
+          <% teas.forEach(tea => { %> 
+            <% if(tea.type === "tea") {%>
+              <li class="item" draggable="true"><%= tea.name %></li>
+            <% } %> 
+          <% }) %>
         </ul>
       </div>
       <div class="column">
         <h2>Toppings</h2>
         <ul>
-          <% for(tea of teas) {%> <% if(tea.type === "topping") {%>
-          <li class="item" draggable="true"><%= tea.name %></li>
-          <% } %> <% } %>
+          <% for(tea of teas) {%> 
+            <% if(tea.type === "topping") {%>
+              <li class="item" draggable="true"><%= tea.name %></li>
+            <% } %> 
+          <% } %>
         </ul>
       </div>
     </section>
-    <section>
-      <h2>Let's mix and match!</h2>
-      <p>To be Continue!</p>
+    <section class="container mix-match">
+      <h2>Let's mix and match your order!</h2>
+      <section class="order-box">
+        <h3>drag your choice of tea and topping</h3>
+        <ul class="order"></ul>
+      </section>
       <!-- https://codepen.io/victoriacheng15/pen/YzegENL?editors=1111 -->
     </section>
   </body>
