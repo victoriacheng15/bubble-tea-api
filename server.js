@@ -22,9 +22,11 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', (request, response) => {
-  // response.sendFile(`${__dirname}/index.html`);
   db.collection('teas').find().toArray()
-    .then((results) => response.render('index.ejs', { teas: results }))
+    .then((results) => {
+      response.render('index.ejs', { teas: results });
+      // console.log(results);
+    })
     .catch((err) => console.log(err));
 });
 
