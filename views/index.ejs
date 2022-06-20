@@ -16,7 +16,7 @@
         <ul class="list">
           <% teas.forEach(tea => { %> 
             <% if(tea.type === "tea") {%>
-              <li class="item" draggable="true"><%= tea.name %></li>
+              <li class="item tea" draggable="true" date-type="<%= tea.type %>"><%= tea.name %></li>
             <% } %> 
           <% }) %>
         </ul>
@@ -26,7 +26,7 @@
         <ul>
           <% for(tea of teas) {%> 
             <% if(tea.type === "topping") {%>
-              <li class="item" draggable="true"><%= tea.name %></li>
+              <li class="item topping" draggable="true" date-type="<%= tea.type %>"><%= tea.name %></li>
             <% } %> 
           <% } %>
         </ul>
@@ -34,10 +34,13 @@
     </section>
     <section class="container mix-match">
       <h2>Let's mix and match your order!</h2>
-      <section class="order-box">
+      <form class="order-box" action="">
+        <label for="order">drag your choice of tea</label>
+        <button class="btn" type="submit">submit your order</button>
+      </form>
+      <!-- <ul class="order-box">
         <h3>drag your choice of tea and topping</h3>
-        <ul class="order"></ul>
-      </section>
+      </ul> -->
       <!-- https://codepen.io/victoriacheng15/pen/YzegENL?editors=1111 -->
     </section>
   </body>
