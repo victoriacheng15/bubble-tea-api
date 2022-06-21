@@ -25,7 +25,6 @@ app.get('/', (request, response) => {
   db.collection('teas').find().toArray()
     .then((results) => {
       response.render('index.ejs', { teas: results });
-      // console.log(results);
     })
     .catch((err) => console.log(err));
 });
@@ -35,6 +34,11 @@ app.post('/teas', (request, response) => {
     .then((result) => {
       response.redirect('/');
     });
+});
+
+app.post('/order', (request, respone) => {
+  respone.redirect('/');
+  console.log(request.body);
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

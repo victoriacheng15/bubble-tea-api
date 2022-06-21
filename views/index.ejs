@@ -9,10 +9,10 @@
     <script src="/main.js" defer></script>
   </head>
   <body>
-    <h1>The home of Bubble Tea API</h1>
+    <h1>the home of bubble tea API</h1>
     <section class="container lists">
-      <div class="column">
-        <h2>Teas</h2>
+      <div class="column teas-list">
+        <h2>teas</h2>
         <ul class="list">
           <% teas.forEach(tea => { %> 
             <% if(tea.type === "tea") {%>
@@ -21,8 +21,8 @@
           <% }) %>
         </ul>
       </div>
-      <div class="column">
-        <h2>Toppings</h2>
+      <div class="column toppings-list">
+        <h2>toppings</h2>
         <ul>
           <% for(tea of teas) {%> 
             <% if(tea.type === "topping") {%>
@@ -33,14 +33,11 @@
       </div>
     </section>
     <section class="container mix-match">
-      <h2>Let's mix and match your order!</h2>
-      <form class="order-box" action="">
-        <label for="order">drag your choice of tea</label>
+      <h2>let's mix and match your order!</h2>
+      <form class="order-box" action="/order" method="POST">
+        <label for="order">drag your choice of tea and topping</label>
         <button class="btn" type="submit">submit your order</button>
       </form>
-      <!-- <ul class="order-box">
-        <h3>drag your choice of tea and topping</h3>
-      </ul> -->
       <!-- https://codepen.io/victoriacheng15/pen/YzegENL?editors=1111 -->
     </section>
   </body>
