@@ -6,6 +6,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 const url = process.env.DB_URL;
+
 let db;
 const dbName = 'bubble-tea-api';
 
@@ -37,8 +38,14 @@ app.post('/teas', (request, response) => {
 });
 
 app.post('/order', (request, respone) => {
+  const { tea, topping } = request.body;
+  console.log({ tea, topping, amount: 1 });
   respone.redirect('/');
-  console.log(request.body);
+//   db.collection('orders').insertOne(request.body.tea)
+//     .then((result) => {
+//       respone.redirect('/');
+//       console.log(result);
+//     });
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
