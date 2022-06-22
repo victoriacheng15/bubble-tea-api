@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/', (request, response) => {
+app.get('/', async (request, response) => {
   db.collection('teas').find().toArray()
     .then((results) => {
       response.render('index.ejs', { teas: results });
@@ -30,22 +30,29 @@ app.get('/', (request, response) => {
     .catch((err) => console.log(err));
 });
 
-app.post('/teas', (request, response) => {
-  db.collection('teas').insertOne(request.body)
-    .then((result) => {
-      response.redirect('/');
-    });
-});
+// this was for sending data of teas and columns to the database's collection named teas
+// app.post('/teas', (request, response) => {
+//   db.collection('teas').insertOne(request.body)
+//     .then(() => {
+//       response.redirect('/');
+//     });
+// });
 
 app.post('/order', (request, respone) => {
   const { tea, topping } = request.body;
-  console.log({ tea, topping, amount: 1 });
-  respone.redirect('/');
-//   db.collection('orders').insertOne(request.body.tea)
-//     .then((result) => {
-//       respone.redirect('/');
-//       console.log(result);
-//     });
+  const orderCollection = db.collection('orders');
+  orderCollection.find({ tea, topping }).toArray()
+    .then((result) => {
+      if (result) {
+        orderCollection.updateOne({ tea, topping }, { $inc: { count: 1 } }, { upsert: true });
+      } else if (!result) {
+        orderCollection.insertOne({
+          tea, topping, count: 1,
+        });
+      }
+      respone.redirect('/');
+    })
+    .catch((err) => console.log(err));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
