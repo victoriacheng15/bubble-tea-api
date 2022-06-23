@@ -31,6 +31,16 @@ app.get('/', (request, response) => {
     .catch((err) => console.log(err));
 });
 
+app.get('/history', (request, response) => {
+  // response.redirect('/history.ejs');
+  response.render('history.ejs');
+});
+
+app.get('/leaderboard', (request, response) => {
+  // response.redirect('/history.ejs');
+  response.render('leaderboard.ejs');
+});
+
 // this was for sending data of teas and columns to the database's collection named teas
 // app.post('/teas', (request, response) => {
 //   db.collection('teas').insertOne(request.body)
