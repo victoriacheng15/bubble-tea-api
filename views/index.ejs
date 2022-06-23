@@ -25,7 +25,7 @@
           <h2>teas</h2>
           <ul class="list">
             <% teas.forEach(tea => { %> <% if(tea.type === "tea") {%>
-            <li class="item tea" draggable="true" date-type="<%= tea.type %>">
+            <li class="item tea" draggable="true" date-name="<%= tea.type %>">
               <%= tea.name %>
             </li>
             <% } %> <% }) %>
