@@ -16,12 +16,21 @@ function handleDragOver(e) {
 }
 
 function disableDrags() {
-  const inputElem = document.querySelectorAll('input');
+  const inputElem = [...document.querySelectorAll('input')];
   const teasCol = document.querySelector('.teas-list');
   const toppingsCol = document.querySelector('.toppings-list');
   if (inputElem.length === 2) {
     teasCol.classList.add('no-pointer');
     toppingsCol.classList.add('no-pointer');
+  }
+}
+
+function enbleSubmit() {
+  const inputElem = [...document.querySelectorAll('input')];
+  const button = document.querySelector('button');
+  const checkForTea = inputElem.some((input) => input.name === 'tea');
+  if (inputElem.length === 2 && checkForTea) {
+    button.disabled = false;
   }
 }
 
@@ -34,7 +43,7 @@ function handleDragDrop() {
   input.name = dragItem.endsWith('tea') ? 'tea' : 'topping';
   input.readOnly = true;
   this.appendChild(input);
-
+  enbleSubmit();
   disableDrags();
 }
 

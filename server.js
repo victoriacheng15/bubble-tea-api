@@ -15,15 +15,16 @@ MongoClient.connect(url, { useUnifiedTopology: true })
     console.log('connect to database');
     db = client.db(dbName);
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('mongodb is not connected', err));
 
 app.set('vew engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/', async (request, response) => {
-  db.collection('teas').find().toArray()
+app.get('/', (request, response) => {
+  const teasCollection = db.collection('teas');
+  teasCollection.find().toArray()
     .then((results) => {
       response.render('index.ejs', { teas: results });
     })
