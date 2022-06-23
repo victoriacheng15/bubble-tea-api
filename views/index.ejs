@@ -36,7 +36,10 @@
       <h2>let's mix and match your order!</h2>
       <form class="order-box" action="/order" method="POST">
         <label for="order">drag your choice of tea and topping</label>
-        <button class="btn" type="submit">submit your order</button>
+        <div class="btn-container">
+          <button class="btn submit-btn" type="submit" disabled>submit your chocies</button>
+          <button class="btn clear-btn">Clear Choices</button>
+        </div>
       </form>
       <!-- https://codepen.io/victoriacheng15/pen/YzegENL?editors=1111 -->
     </section>
