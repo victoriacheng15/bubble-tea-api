@@ -1,7 +1,7 @@
 let dragItem = null;
 
 function handleDragStart() {
-  dragItem = this.textContent;
+  dragItem = this;
   this.style.opacity = '0.4';
 }
 
@@ -16,7 +16,7 @@ function handleDragOver(e) {
 }
 
 function disableDrags() {
-  const inputElem = [...document.querySelectorAll('input')];
+  const inputElem = document.querySelectorAll('input');
   const teasCol = document.querySelector('.teas-list');
   const toppingsCol = document.querySelector('.toppings-list');
   if (inputElem.length === 2) {
@@ -26,25 +26,26 @@ function disableDrags() {
 }
 
 function enbleSubmit() {
-  const inputElem = [...document.querySelectorAll('input')];
-  const button = document.querySelector('button');
-  const checkForTea = inputElem.some((input) => input.name === 'tea');
+  const inputElem = document.querySelectorAll('input');
+  const submitBtn = document.querySelector('.submit-btn');
+  const checkForTea = [...inputElem].some((input) => input.name === 'tea');
   if (inputElem.length === 2 && checkForTea) {
-    button.disabled = false;
+    submitBtn.disabled = false;
   }
 }
 
 function handleDragDrop() {
   this.style.backgroundColor = 'lightblue';
   const input = document.createElement('input');
+  const textValue = dragItem.innerText;
   input.classList.add('input');
   input.type = 'text';
-  input.value = dragItem;
-  input.name = dragItem.endsWith('tea') ? 'tea' : 'topping';
+  input.value = textValue;
+  input.name = textValue.split(' ').some((word) => word === 'Tea') ? 'tea' : 'topping';
   input.readOnly = true;
   this.appendChild(input);
-  enbleSubmit();
   disableDrags();
+  enbleSubmit();
 }
 
 const items = document.querySelectorAll('.item');
