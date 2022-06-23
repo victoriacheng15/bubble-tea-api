@@ -1,5 +1,9 @@
 :root {
-  --distance: 20px;
+  --dark-brown: #38220f;
+  --light-brown: #704041;
+  --milk-tea: #d8c5a6;
+  --light-milk-tea: #dbc1ac;
+  --lighest-milk-tea: #ece0d1;
 }
 
 *,
@@ -53,7 +57,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 36px;
+  gap: 24px;
   color: darkslategray;
 }
 
@@ -67,6 +71,38 @@ label {
 .container {
   margin: 0 auto;
   width: min(90%, 900px);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.link {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: cyan;
+  font-weight: bolder;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }
 
 .lists {
