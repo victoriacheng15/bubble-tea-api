@@ -29,7 +29,8 @@ function enbleSubmit() {
   const inputElem = document.querySelectorAll('input');
   const submitBtn = document.querySelector('.submit-btn');
   const checkForTea = [...inputElem].some((input) => input.name === 'tea');
-  if (inputElem.length === 2 && checkForTea) {
+  const checkForTopping = [...inputElem].some((input) => input.name === 'topping');
+  if (inputElem.length === 2 && checkForTea && checkForTopping) {
     submitBtn.disabled = false;
   }
 }
