@@ -12,7 +12,6 @@ function handleDragEnd() {
 
 function handleDragOver(e) {
   e.preventDefault();
-  this.style.backgroundColor = 'lightcyan';
 }
 
 function noPointerClass(arr, action) {
@@ -41,7 +40,7 @@ function enbleSubmit() {
 }
 
 function handleDragDrop() {
-  this.style.backgroundColor = 'lightblue';
+  this.style.backgroundColor = '#ece0d1';
   const input = document.createElement('input');
   const textValue = dragItem.innerText;
   input.classList.add('input');

@@ -22,7 +22,7 @@
       <!--  -->
       <ul class="leaderboard">
         <% orders.forEach(order => { %>
-        <li class="leaderboard-list" date-name="<%= order.type %>">
+        <li class="leaderboard-list" date-count="<%= order.count %>">
           <span><%= order.tea %> with <%= order.topping %></span>
           <span><%= order.count %></span>
         </li>
