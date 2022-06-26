@@ -304,9 +304,23 @@ button {
 .leaderboard-list {
   padding: 10px;
   background: var(--lighest-milk-tea);
+  border: 2px solid var(--light-brown);
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   color: var(--dark-brown);
   gap: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaderboard-list span {
+  z-index: 1;
+}
+
+.leading-background {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  background: var(--milk-tea);
 }

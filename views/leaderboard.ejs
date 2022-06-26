@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css" />
+    <script src="/leaderboard.js" defer></script>
     <title>leaderboard</title>
   </head>
   <body>
@@ -19,10 +20,10 @@
       </nav>
     </header>
     <main>
-      <!--  -->
       <ul class="leaderboard">
         <% orders.forEach(order => { %>
         <li class="leaderboard-list" date-count="<%= order.count %>">
+          <span class="leading-background"></span>
           <span><%= order.tea %> with <%= order.topping %></span>
           <span><%= order.count %></span>
         </li>

@@ -62,6 +62,7 @@ function reset(e) {
   noPointerClass([teasCol, toppingsCol]);
 }
 
+// even listeners
 const items = document.querySelectorAll('.item');
 items.forEach((item) => {
   item.addEventListener('dragstart', handleDragStart);
