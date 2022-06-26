@@ -18,5 +18,16 @@
         </ul>
       </nav>
     </header>
+    <main>
+      <!--  -->
+      <ul class="leaderboard">
+        <% orders.forEach(order => { %>
+        <li class="leaderboard-list" date-name="<%= order.type %>">
+          <span><%= order.tea %> with <%= order.topping %></span>
+          <span><%= order.count %></span>
+        </li>
+        <% }) %>
+      </ul>
+    </main>
   </body>
 </html>

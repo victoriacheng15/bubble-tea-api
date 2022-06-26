@@ -15,13 +15,18 @@ function handleDragOver(e) {
   this.style.backgroundColor = 'lightcyan';
 }
 
+function noPointerClass(arr, action) {
+  return action === 'add'
+    ? arr.forEach(((elem) => elem.classList.add('no-pointer')))
+    : arr.forEach(((elem) => elem.classList.remove('no-pointer')));
+}
+
 function disableDrags() {
   const inputElem = document.querySelectorAll('input');
   const teasCol = document.querySelector('.teas-list');
   const toppingsCol = document.querySelector('.toppings-list');
   if (inputElem.length === 2) {
-    teasCol.classList.add('no-pointer');
-    toppingsCol.classList.add('no-pointer');
+    noPointerClass([teasCol, toppingsCol], 'add');
   }
 }
 
@@ -49,6 +54,15 @@ function handleDragDrop() {
   enbleSubmit();
 }
 
+function reset(e) {
+  e.preventDefault();
+  const inputs = [...document.querySelectorAll('input')];
+  const teasCol = document.querySelector('.teas-list');
+  const toppingsCol = document.querySelector('.toppings-list');
+  inputs.forEach((element) => element.remove());
+  noPointerClass([teasCol, toppingsCol]);
+}
+
 const items = document.querySelectorAll('.item');
 items.forEach((item) => {
   item.addEventListener('dragstart', handleDragStart);
@@ -59,3 +73,7 @@ items.forEach((item) => {
 const orderBox = document.querySelector('.order-box');
 orderBox.addEventListener('dragover', handleDragOver);
 orderBox.addEventListener('drop', handleDragDrop);
+
+// reset
+const clearBtn = document.querySelector('.clear-btn');
+clearBtn.addEventListener('click', reset);
