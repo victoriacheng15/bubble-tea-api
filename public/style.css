@@ -51,14 +51,14 @@ img {
 }
 
 body {
+  min-height: 100vh;
   padding-block: 36px;
-  background: whitesmoke;
+  background: var(--lighest-milk-tea);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 24px;
-  color: darkslategray;
+  color: var(--dark-brown);
 }
 
 h1,
@@ -66,6 +66,11 @@ h2,
 label {
   text-align: center;
   text-transform: capitalize;
+}
+
+h1,
+h2 {
+  color: var(--dark-brown);
 }
 
 .container {
@@ -85,15 +90,24 @@ nav ul {
   gap: 24px;
 }
 
+.link a {
+  color: var(--lighest-milk-tea);
+}
+
 .link {
   padding: 10px 16px;
+  background: var(--dark-brown);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: cyan;
   font-weight: bolder;
   text-transform: capitalize;
   cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.link:hover {
+  background: var(--light-brown);
 }
 
 main {
@@ -114,7 +128,7 @@ main {
 .column {
   width: min(50%, 450px);
   padding: 24px 16px;
-  background-color: lightcyan;
+  background: var(--milk-tea);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -130,8 +144,9 @@ main {
 
 .item {
   padding: 10px 16px;
-  background: lightgreen;
+  background: var(--dark-brown);
   border-radius: 5px;
+  color: var(--lighest-milk-tea);
   text-transform: capitalize;
   cursor: move;
   transition: opacity 300ms ease-in-out;
@@ -143,7 +158,7 @@ main {
 
 .mix-match {
   padding: 24px;
-  background: lightgreen;
+  background: var(--milk-tea);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -155,7 +170,8 @@ main {
   width: 100%;
   height: 300px;
   padding: 16px;
-  background: lightblue;
+  background: var(--lighest-milk-tea);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,19 +182,20 @@ main {
 .input {
   border: none;
   padding: 10px 16px;
-  background: lightgreen;
+  background: var(--dark-brown);
   border-radius: 5px;
+  color: var(--lighest-milk-tea);
   text-transform: capitalize;
-  color: darkslategray;
 }
 
 button {
-  width: min(100%, 175px);
+  width: min(100%, 200px);
   padding: 8px 16px;
-  background: lightcyan;
+  background: var(--light-brown);
   border-radius: 5px;
-  border: 2px solid lightgreen;
+  border: 3px solid var(--dark-brown);
   font-size: 0.9rem;
+  color: var(--lighest-milk-tea);
   text-transform: capitalize;
   cursor: pointer;
   transition: all 300ms ease-in-out;
@@ -202,7 +219,7 @@ button {
 }
 
 .btn:hover {
-  background-color: lightgreen;
+  background-color: var(--dark-brown);
 }
 
 .no-pointer {
@@ -217,7 +234,7 @@ button {
   width: 100%;
   height: 100%;
   inset: 0;
-  background: gray;
+  background: var(--light-milk-tea);
   opacity: 0.35;
 }
 
@@ -234,6 +251,7 @@ button {
 
 .bold {
   font-weight: bolder;
+  text-decoration: underline wavy var(--dark-brown);
 }
 
 .sources {
@@ -250,10 +268,34 @@ button {
   gap: 16px;
 }
 
+.source-link a {
+  color: var(--dark-brown);
+}
+
+.source-link {
+  padding: 5px;
+  position: relative;
+}
+
+.source-link:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: var(--light-milk-tea);
+  z-index: -1;
+  transition: all 400ms ease-in-out;
+}
+
+.source-link:hover:before {
+  width: 100%;
+}
+
 /* leaderboard ======================= */
 .leaderboard {
   padding: 36px;
-  background: lightgreen;
+  background: var(--milk-tea);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -261,8 +303,10 @@ button {
 
 .leaderboard-list {
   padding: 10px;
-  background: lightblue;
+  background: var(--lighest-milk-tea);
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  color: var(--dark-brown);
   gap: 36px;
 }
