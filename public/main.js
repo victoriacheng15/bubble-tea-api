@@ -54,12 +54,14 @@ function handleDragDrop() {
 }
 
 function reset(e) {
+  const submitBtn = document.querySelector('.submit-btn');
   e.preventDefault();
   const inputs = [...document.querySelectorAll('input')];
   const teasCol = document.querySelector('.teas-list');
   const toppingsCol = document.querySelector('.toppings-list');
   inputs.forEach((element) => element.remove());
   noPointerClass([teasCol, toppingsCol]);
+  submitBtn.disabled = true;
 }
 
 // even listeners
