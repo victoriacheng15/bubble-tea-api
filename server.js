@@ -32,13 +32,16 @@ app.get('/', (request, response) => {
 });
 
 app.get('/history', (request, response) => {
-  // response.redirect('/history.ejs');
   response.render('history.ejs');
 });
 
 app.get('/leaderboard', (request, response) => {
   // response.redirect('/history.ejs');
-  response.render('leaderboard.ejs');
+  const orderCollection = db.collection('orders');
+  orderCollection.find().sort({ count: -1 }).toArray()
+    .then((results) => {
+      response.render('leaderboard.ejs', { orders: results });
+    });
 });
 
 // this was for sending data of teas and columns to the database's collection named teas

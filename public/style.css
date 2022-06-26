@@ -249,3 +249,20 @@ button {
   align-items: flex-start;
   gap: 16px;
 }
+
+/* leaderboard ======================= */
+.leaderboard {
+  padding: 36px;
+  background: lightgreen;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.leaderboard-list {
+  padding: 10px;
+  background: lightblue;
+  display: flex;
+  justify-content: space-between;
+  gap: 36px;
+}
