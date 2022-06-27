@@ -1,3 +1,9 @@
+const teasCol = document.querySelector('.teas-list');
+const toppingsCol = document.querySelector('.toppings-list');
+const items = document.querySelectorAll('.item');
+const orderBox = document.querySelector('.order-box');
+const submitBtn = document.querySelector('.submit-btn');
+const clearBtn = document.querySelector('.clear-btn');
 let dragItem = null;
 
 function handleDragStart() {
@@ -20,33 +26,35 @@ function noPointerClass(arr, action) {
     : arr.forEach(((elem) => elem.classList.remove('no-pointer')));
 }
 
+function disabledButton(boolean) {
+  boolean ? submitBtn.disabled = true : submitBtn.disabled = false;
+}
+
 function disableDrags() {
-  const inputElem = document.querySelectorAll('input');
-  const teasCol = document.querySelector('.teas-list');
-  const toppingsCol = document.querySelector('.toppings-list');
-  if (inputElem.length === 2) {
+  const inputElems = document.querySelectorAll('input');
+  if (inputElems.length === 2) {
     noPointerClass([teasCol, toppingsCol], 'add');
   }
 }
 
 function enbleSubmit() {
-  const inputElem = document.querySelectorAll('input');
-  const submitBtn = document.querySelector('.submit-btn');
-  const checkForTea = [...inputElem].some((input) => input.name === 'tea');
-  const checkForTopping = [...inputElem].some((input) => input.name === 'topping');
-  if (inputElem.length === 2 && checkForTea && checkForTopping) {
-    submitBtn.disabled = false;
+  const inputElems = document.querySelectorAll('input');
+  const checkForTea = [...inputElems].some((input) => input.name === 'tea');
+  const checkForTopping = [...inputElems].some((input) => input.name === 'topping');
+  if (inputElems.length === 2 && checkForTea && checkForTopping) {
+    disabledButton(false);
   }
 }
 
 function handleDragDrop() {
   this.style.backgroundColor = '#ece0d1';
   const input = document.createElement('input');
+  const typeForInputs = (word) => word === 'Tea';
   const textValue = dragItem.innerText;
   input.classList.add('input');
   input.type = 'text';
   input.value = textValue;
-  input.name = textValue.split(' ').some((word) => word === 'Tea') ? 'tea' : 'topping';
+  input.name = textValue.split(' ').some(typeForInputs) ? 'tea' : 'topping';
   input.readOnly = true;
   this.appendChild(input);
   disableDrags();
@@ -54,28 +62,22 @@ function handleDragDrop() {
 }
 
 function reset(e) {
-  const submitBtn = document.querySelector('.submit-btn');
   e.preventDefault();
-  const inputs = [...document.querySelectorAll('input')];
-  const teasCol = document.querySelector('.teas-list');
-  const toppingsCol = document.querySelector('.toppings-list');
-  inputs.forEach((element) => element.remove());
+  const inputElems = [...document.querySelectorAll('input')];
+  inputElems.forEach((element) => element.remove());
   noPointerClass([teasCol, toppingsCol]);
-  submitBtn.disabled = true;
+  disabledButton(true);
 }
 
 // even listeners
-const items = document.querySelectorAll('.item');
 items.forEach((item) => {
   item.addEventListener('dragstart', handleDragStart);
   item.addEventListener('dragend', handleDragEnd);
 });
 
 // order box
-const orderBox = document.querySelector('.order-box');
 orderBox.addEventListener('dragover', handleDragOver);
 orderBox.addEventListener('drop', handleDragDrop);
 
 // reset
-const clearBtn = document.querySelector('.clear-btn');
 clearBtn.addEventListener('click', reset);

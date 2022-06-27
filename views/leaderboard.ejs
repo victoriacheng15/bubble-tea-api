@@ -22,7 +22,10 @@
     <main>
       <ul class="leaderboard">
         <% orders.forEach(order => { %>
-        <li class="leaderboard-list" date-count="<%= order.count %>">
+        <li
+          class="leaderboard-list standard-border"
+          date-count="<%= order.count %>"
+        >
           <span class="leading-background"></span>
           <span><%= order.tea %> with <%= order.topping %></span>
           <span><%= order.count %></span>
@@ -30,5 +33,19 @@
         <% }) %>
       </ul>
     </main>
+    <footer>
+      Bubble Tea API is made by Victoria Cheng
+      <a href="https://github.com/victoriacheng15/bubble-tea-api"
+        ><ion-icon name="logo-github"></ion-icon
+      ></a>
+    </footer>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
