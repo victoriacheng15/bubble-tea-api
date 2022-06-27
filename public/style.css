@@ -4,6 +4,9 @@
   --milk-tea: #d8c5a6;
   --light-milk-tea: #dbc1ac;
   --lighest-milk-tea: #ece0d1;
+  --standard-radius: 5px;
+  --standard-gap: 16px;
+  --standard-padding: 16px;
 }
 
 *,
@@ -15,6 +18,7 @@
 }
 
 body {
+  min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
@@ -51,13 +55,13 @@ img {
 }
 
 body {
-  min-height: 100vh;
-  padding-block: 36px;
+  padding-block-start: calc(var(--standard-padding) * 2);
   background: var(--lighest-milk-tea);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
   color: var(--dark-brown);
 }
 
@@ -78,16 +82,25 @@ h2 {
   width: min(90%, 900px);
 }
 
-header {
+.standard-border {
+  border: 2px solid var(--dark-brown);
+}
+
+/*  header ====================== */
+header,
+nav ul,
+.link {
   display: flex;
+}
+
+header {
   flex-direction: column;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
 }
 
 nav ul {
-  display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
 }
 
 .link a {
@@ -95,9 +108,8 @@ nav ul {
 }
 
 .link {
-  padding: 10px 16px;
+  padding: calc(var(--standard-padding) * 0.625) var(--standard-padding);
   background: var(--dark-brown);
-  display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bolder;
@@ -110,42 +122,46 @@ nav ul {
   background: var(--light-brown);
 }
 
+/*  main ================================== */
+main,
+.lists,
+.column,
+.column ul {
+  display: flex;
+}
+
 main {
   width: 100%;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
 }
 
 .lists {
-  display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
 }
 
 .column {
   width: min(50%, 450px);
-  padding: 24px 16px;
+  padding: calc(var(--standard-padding) * 1.5) var(--standard-padding);
   background: var(--milk-tea);
-  border-radius: 10px;
-  display: flex;
+  border-radius: var(--standard-radius);
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: var(--standard-gap);
 }
 
 .column ul {
-  display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(var(--standard-gap) * 0.75);
 }
 
 .item {
-  padding: 10px 16px;
+  padding: calc(var(--standard-padding) * 0.625) var(--standard-padding);
   background: var(--dark-brown);
-  border-radius: 5px;
+  border-radius: var(--standard-radius);
   color: var(--lighest-milk-tea);
   text-transform: capitalize;
   cursor: move;
@@ -156,44 +172,48 @@ main {
   opacity: 0.8;
 }
 
-.mix-match {
-  padding: 24px;
-  background: var(--milk-tea);
-  border-radius: 10px;
+/*  mix match box ======================== */
+.mix-match,
+.order-box,
+.btn-container {
   display: flex;
+}
+
+.mix-match {
+  padding: calc(var(--standard-padding) * 1.5);
+  background: var(--milk-tea);
+  border-radius: var(--standard-radius);
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
 }
 
 .order-box {
   width: 100%;
   height: 300px;
-  padding: 16px;
+  padding: var(--standard-padding);
   background: var(--lighest-milk-tea);
-  border-radius: 10px;
-  display: flex;
+  border-radius: var(--standard-radius);
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
   position: relative;
 }
 
 .input {
   border: none;
-  padding: 10px 16px;
+  padding: calc(var(--standard-padding) * 0.625) var(--standard-padding);
   background: var(--dark-brown);
-  border-radius: 5px;
+  border-radius: var(--standard-radius);
   color: var(--lighest-milk-tea);
   text-transform: capitalize;
 }
 
 button {
   width: min(100%, 200px);
-  padding: 8px 16px;
+  padding: calc(var(--standard-padding) * 0.5) var(--standard-padding);
   background: var(--light-brown);
-  border-radius: 5px;
-  border: 3px solid var(--dark-brown);
+  border-radius: var(--standard-radius);
   font-size: 0.9rem;
   color: var(--lighest-milk-tea);
   text-transform: capitalize;
@@ -210,11 +230,10 @@ button:disabled {
   width: 100%;
   position: absolute;
   bottom: 15px;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: var(--standard-gap);
 }
 
 @media (min-width: 750px) {
@@ -244,10 +263,15 @@ button:disabled {
 }
 
 /* history ============= */
-.history {
+.history,
+.sources,
+.sources ul {
   display: flex;
+}
+
+.history {
   flex-direction: column;
-  gap: 24px;
+  gap: calc(var(--standard-gap) * 1.5);
 }
 
 .history p {
@@ -260,25 +284,24 @@ button:disabled {
 }
 
 .sources {
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: var(--standard-gap);
 }
 
 .sources ul {
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: var(--standard-gap);
 }
 
 .source-link a {
   color: var(--dark-brown);
+  text-transform: capitalize;
 }
 
 .source-link {
-  padding: 5px;
+  padding: 5px 5px 5px 0;
   position: relative;
 }
 
@@ -297,24 +320,26 @@ button:disabled {
 }
 
 /* leaderboard ======================= */
-.leaderboard {
-  padding: 36px;
-  background: var(--milk-tea);
-  border-radius: 10px;
+.leaderboard,
+.leaderboard-list {
   display: flex;
+}
+
+.leaderboard {
+  padding: calc(var(--standard-padding) * 2);
+  background: var(--milk-tea);
+  border-radius: var(--standard-radius);
   flex-direction: column;
-  gap: 16px;
+  gap: var(--standard-gap);
 }
 
 .leaderboard-list {
-  padding: 10px;
+  padding: calc(var(--standard-padding) * 0.5);
   background: var(--lighest-milk-tea);
-  border: 2px solid var(--light-brown);
-  border-radius: 10px;
-  display: flex;
+  border-radius: var(--standard-radius);
   justify-content: space-between;
   color: var(--dark-brown);
-  gap: 36px;
+  gap: calc(var(--standard-gap) * 3.5);
   position: relative;
   overflow: hidden;
 }
@@ -328,4 +353,23 @@ button:disabled {
   inset: 0;
   height: 100%;
   background: var(--milk-tea);
+}
+
+footer {
+  padding: calc(var(--standard-padding) * 2) 0
+    calc(var(--standard-padding) * 0.5) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+footer a {
+  display: grid;
+  place-items: center;
+}
+
+ion-icon {
+  color: var(--dark-brown);
+  font-size: 16px;
 }
