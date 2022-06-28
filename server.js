@@ -5,7 +5,7 @@ const { MongoClient } = require('mongodb');
 const app = express();
 
 const PORT = process.env.PORT || 8000;
-const url = process.env.DB_URL;
+const url = process.env.MONGODB_URI;
 
 let db;
 const dbName = 'bubble-tea-api';
