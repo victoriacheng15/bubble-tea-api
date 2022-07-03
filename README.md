@@ -1,6 +1,6 @@
 # Bubble Tea Home
 
-It is a home to bubble tea where users can mix and match their favorite drinks. The users also can learn short and simple history of bubble tea. There is also a leaderboard that shows which drinks are the most loved by people. :D
+It is a home to bubble tea app where users can mix and match their favorite drinks. The users also can learn short and simple history of bubble tea. There is also a leaderboard that shows which drinks are the most loved by people. :D
 
 > A warning, the drag and drop feature doesn't work on mobile, so for your best experience, please access this app on non-mobile devices. 
 
