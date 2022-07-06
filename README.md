@@ -16,7 +16,7 @@ I love bubble tea and am also curious to see what flavors others like as well!
   - If both choice are teas or toppings, the submit button will not enable (please refer to the gif below)
 - Change your mind? You can clear your choices
 
-## Dependenies
+## Dependencies
 
 ```json
 "dependencies": {
