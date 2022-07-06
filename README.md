@@ -6,6 +6,8 @@ I love bubble tea and am also curious to see what flavors others like as well!
 
 > Update: users now can click to add their favorite drinks. :D
 
+## App function
+
 - Users can drag and drop their favorite tea and topping to the box
 - Dragged tea and topping will be sent to the database
 - The page will check the database to see if the choice:
