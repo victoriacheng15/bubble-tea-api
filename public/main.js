@@ -46,17 +46,28 @@ function enbleSubmit() {
   }
 }
 
-function handleDragDrop() {
-  this.style.backgroundColor = '#ece0d1';
+function createInputElemets(text) {
   const input = document.createElement('input');
   const typeForInputs = (word) => word === 'Tea';
-  const textValue = dragItem.innerText;
+  const textValue = text;
   input.classList.add('input');
   input.type = 'text';
   input.value = textValue;
   input.name = textValue.split(' ').some(typeForInputs) ? 'tea' : 'topping';
   input.readOnly = true;
-  this.appendChild(input);
+  orderBox.appendChild(input);
+}
+
+function handleDragDrop() {
+  this.style.backgroundColor = '#ece0d1';
+  createInputElemets(dragItem.innerText);
+  disableDrags();
+  enbleSubmit();
+}
+
+function clickAddChoices(e) {
+  const elemText = e.target.innerText;
+  createInputElemets(elemText);
   disableDrags();
   enbleSubmit();
 }
@@ -69,15 +80,65 @@ function reset(e) {
   disabledButton(true);
 }
 
-// even listeners
-items.forEach((item) => {
-  item.addEventListener('dragstart', handleDragStart);
-  item.addEventListener('dragend', handleDragEnd);
-});
+function clickAddEvent() {
+  items.forEach((item) => item.addEventListener('click', clickAddChoices));
+}
 
-// order box
-orderBox.addEventListener('dragover', handleDragOver);
-orderBox.addEventListener('drop', handleDragDrop);
+function removeClickAddEvent() {
+  items.forEach((item) => item.removeEventListener('click', clickAddChoices));
+}
+
+function dragAndDropEvent() {
+  items.forEach((item) => {
+    item.addEventListener('dragstart', handleDragStart);
+    item.addEventListener('dragend', handleDragEnd);
+  });
+
+  orderBox.addEventListener('dragover', handleDragOver);
+  orderBox.addEventListener('drop', handleDragDrop);
+}
+
+function removeDnDEvent() {
+  items.forEach((item) => {
+    item.removeEventListener('dragstart', handleDragStart);
+    item.removeEventListener('dragend', handleDragEnd);
+  });
+
+  orderBox.removeEventListener('dragover', handleDragOver);
+  orderBox.removeEventListener('drop', handleDragDrop);
+}
+
+function displayWidthAndAction(width, defaultWidth) {
+  const showWidth = document.querySelector('[data-width]');
+  const showAction = document.querySelector('[data-action]');
+  showWidth.textContent = `${width} px`;
+  showAction.textContent = `${width > defaultWidth ? 'drag' : 'click'}`;
+}
+
+function checkWidth() {
+  const defaultWidth = 700;
+  const width = window.innerWidth;
+
+  displayWidthAndAction(width, defaultWidth);
+
+  if (width < defaultWidth) {
+    clickAddEvent();
+    removeDnDEvent();
+  }
+
+  if (width > defaultWidth) {
+    dragAndDropEvent();
+    removeClickAddEvent();
+  }
+}
+
+let timeout = false;
+
+window.addEventListener('load', checkWidth);
+window.addEventListener('resize', () => {
+  clearTimeout(timeout);
+  timeout = setTimeout(checkWidth, 250);
+});
 
 // reset
 clearBtn.addEventListener('click', reset);
