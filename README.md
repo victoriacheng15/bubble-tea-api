@@ -1,23 +1,40 @@
-# Bubble Tea Home
+# Bubble Tea App
 
-It is a home to bubble tea app where users can mix and match their favorite drinks. The users also can learn short and simple history of bubble tea. There is also a leaderboard that shows which drinks are the most loved by people. :D
+This is an app where users can learn about short history of the bubble tea, submit their favorite combinations. And a leaderboard shows which flvaors are loved by the users. 
+
+I love bubble tea and am also curious to see what flavors others like as well!
 
 > A warning, the drag and drop feature doesn't work on mobile, so for your best experience, please access this app on non-mobile devices. 
+## App function
 
-## Motivation and Learning
+- Users can drag and drop their favorite tea and topping to the box
+- Dragged tea and topping will be sent to the database
+- The page will check the database to see if the choice:
+  - Is existed, the count will increase by 1
+  - Is NOT existed, insert/create the new data
+- The drag and drop box will check choices contains each type of tea and topping
+  - If both choice are teas or toppings, the submit button will not enable (please refer to the gif below)
+- Change your mind? You can clear your choices
 
-I love bubble tea and curious to see what are other favorites as well.
+## Dependenies
 
-The purpose of this project:
-- Learning about drag and drop API
-- Send information to the database
-  - Check database to see if information existed or not,
-    - If not existed, insert new data
-    - If existed, update the count for leaderboard
-- Make sure the the choices contains 1 of each type, tea and topping
-  - If not, the submit button stays disabled
-- The ability of clear choices
+```json
+"dependencies": {
+  "dotenv": "^16.0.1",
+  "ejs": "^3.1.8",
+  "express": "^4.18.1",
+  "mongodb": "^4.7.0"
+}
+```
 
+```json
+"devDependencies": {
+  "eslint": "^8.18.0",
+  "eslint-config-airbnb-base": "^15.0.0",
+  "eslint-plugin-import": "^2.26.0",
+  "nodemon": "^1.3.3"
+}
+```
 ## Screenshots/gif
 
 <details open>
@@ -49,9 +66,14 @@ The purpose of this project:
 - EJS
 - CSS
 
+## What I learned
+
+This project helped me to understand how to interact the front-end with the back-end. Users can submit their information to database, in this case, the information will be their favorite type of tea and topping. The page needs to ensure the information is correct before sending to the server. Once the information is submitted, the server will either create or update the data. 
+
+I also learned about drag and drop API. One thing I didn't realize that the drag{somrthing} (e.g. dragenter, dragstart, etc) is click type, which mean it would not work on mobile devices. In order for drag and drop to work on mobile devices, it needs to use touch{something} (e.g. touchstart, touchmove, etc) event listeners for the users to use this app on mobile devices.
 ## Installation
 
-Before installing, make sure you have node.js installed on your machine. If it is already installed, follow the steps below
+Before installing, make sure you have node.js installed on your machine. If it is already installed, follow the steps below.
 
 Step 1
 ```
@@ -70,7 +92,7 @@ npm install
 
 Step 4
 
-Please refer to this [guide](https://www.mongodb.com/basics/mongodb-atlas-tutorial) on how to set up MongoDB atlas for this.
+Please refer to this [guide](https://www.mongodb.com/basics/mongodb-atlas-tutorial) on how to set up MongoDB atlas.
 
 Step 5
 
