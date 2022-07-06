@@ -4,8 +4,7 @@ This is an app where users can learn about short history of the bubble tea, subm
 
 I love bubble tea and am also curious to see what flavors others like as well!
 
-> A warning, the drag and drop feature doesn't work on mobile, so for your best experience, please access this app on non-mobile devices. 
-## App function
+> Update: users now can click to add their favorite drinks. :D
 
 - Users can drag and drop their favorite tea and topping to the box
 - Dragged tea and topping will be sent to the database
