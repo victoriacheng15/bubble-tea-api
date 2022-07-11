@@ -362,6 +362,7 @@ button:disabled {
 footer {
   padding: calc(var(--standard-padding) * 2) 0
     calc(var(--standard-padding) * 0.5) 0;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
