@@ -1,6 +1,6 @@
 # Bubble Tea App
 
-This is an app where users can learn about short history of the bubble tea, submit their favorite combinations. And a leaderboard shows which flvaors are loved by the users. 
+This is an app where users can learn about short history of the bubble tea, submit their favorite combinations. And a leaderboard shows which flvaors are loved by the users.
 
 I love bubble tea and am also curious to see what flavors others like as well!
 
@@ -36,6 +36,7 @@ I love bubble tea and am also curious to see what flavors others like as well!
   "nodemon": "^1.3.3"
 }
 ```
+
 ## Screenshots/gif
 
 <details open>
@@ -62,31 +63,35 @@ I love bubble tea and am also curious to see what flavors others like as well!
 ## Built With
 
 - Node/Express
-- JavaScript 
+- JavaScript
 - MongoDB
 - EJS
 - CSS
 
 ## What I learned
 
-This project helped me to understand how to interact the front-end with the back-end. Users can submit their information to database, in this case, the information will be their favorite type of tea and topping. The page needs to ensure the information is correct before sending to the server. Once the information is submitted, the server will either create or update the data. 
+This project helped me to understand how to interact the front-end with the back-end. Users can submit their information to database, in this case, the information will be their favorite type of tea and topping. The page needs to ensure the information is correct before sending to the server. Once the information is submitted, the server will either create or update the data.
 
 I also learned about drag and drop API. One thing I didn't realize that the drag{somrthing} (e.g. dragenter, dragstart, etc) is click type, which mean it would not work on mobile devices. In order for drag and drop to work on mobile devices, it needs to use touch{something} (e.g. touchstart, touchmove, etc) event listeners for the users to use this app on mobile devices.
+
 ## Installation
 
 Before installing, make sure you have node.js installed on your machine. If it is already installed, follow the steps below.
 
 Step 1
+
 ```
 git clone git@github.com:victoriacheng15/bubble-tea-api.git
 ```
 
 Step 2
+
 ```
 cd bubble-tea-api
 ```
 
 Step 3
+
 ```
 npm install
 ```
@@ -101,7 +106,6 @@ Step 5
 npm run dev
 ```
 
-
 ## Thank you!
 
-Thank you for check out this app and repo. 
+Thank you for check out this app and repo.
