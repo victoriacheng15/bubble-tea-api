@@ -1,6 +1,6 @@
-require('dotenv').config();
-const express = require('express');
-const { MongoClient } = require('mongodb');
+require("dotenv").config();
+const express = require("express");
+const { MongoClient } = require("mongodb");
 
 const app = express();
 
@@ -8,39 +8,44 @@ const PORT = process.env.PORT || 8000;
 const url = process.env.MONGODB_URI;
 
 let db;
-const dbName = 'bubble-tea-api';
+const dbName = "bubble-tea-api";
 
 MongoClient.connect(url, { useUnifiedTopology: true })
   .then((client) => {
-    console.log('connect to database');
+    console.log("connect to database");
     db = client.db(dbName);
   })
-  .catch((err) => console.log('mongodb is not connected', err));
+  .catch((err) => console.log("mongodb is not connected", err));
 
-app.set('vew engine', 'ejs');
+app.set("vew engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-app.get('/', (request, response) => {
-  const teasCollection = db.collection('teas');
-  teasCollection.find().toArray()
+app.get("/", (request, response) => {
+  const teasCollection = db.collection("teas");
+  teasCollection
+    .find()
+    .toArray()
     .then((results) => {
-      response.render('index.ejs', { teas: results });
+      response.render("index.ejs", { teas: results });
     })
     .catch((err) => console.log(err));
 });
 
-app.get('/history', (request, response) => {
-  response.render('history.ejs');
+app.get("/history", (request, response) => {
+  response.render("history.ejs");
 });
 
-app.get('/leaderboard', (request, response) => {
+app.get("/leaderboard", (request, response) => {
   // response.redirect('/history.ejs');
-  const orderCollection = db.collection('orders');
-  orderCollection.find().sort({ count: -1 }).toArray()
+  const orderCollection = db.collection("orders");
+  orderCollection
+    .find()
+    .sort({ count: -1 })
+    .toArray()
     .then((results) => {
-      response.render('leaderboard.ejs', { orders: results });
+      response.render("leaderboard.ejs", { orders: results });
     });
 });
 
@@ -52,19 +57,27 @@ app.get('/leaderboard', (request, response) => {
 //     });
 // });
 
-app.post('/order', (request, respone) => {
+app.post("/order", (request, respone) => {
   const { tea, topping } = request.body;
-  const orderCollection = db.collection('orders');
-  orderCollection.find({ tea, topping }).toArray()
+  const orderCollection = db.collection("orders");
+  orderCollection
+    .find({ tea, topping })
+    .toArray()
     .then((result) => {
       if (result) {
-        orderCollection.updateOne({ tea, topping }, { $inc: { count: 1 } }, { upsert: true });
+        orderCollection.updateOne(
+          { tea, topping },
+          { $inc: { count: 1 } },
+          { upsert: true }
+        );
       } else if (!result) {
         orderCollection.insertOne({
-          tea, topping, count: 1,
+          tea,
+          topping,
+          count: 1,
         });
       }
-      respone.redirect('/');
+      respone.redirect("/");
     })
     .catch((err) => console.log(err));
 });
