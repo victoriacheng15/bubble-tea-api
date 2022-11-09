@@ -83,5 +83,3 @@ app.post("/order", (request, response) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-module.exports = app;
