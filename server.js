@@ -57,7 +57,7 @@ app.get("/leaderboard", (request, response) => {
 //     });
 // });
 
-app.post("/order", (request, respone) => {
+app.post("/order", (request, response) => {
   const { tea, topping } = request.body;
   const orderCollection = db.collection("orders");
   orderCollection
@@ -77,7 +77,7 @@ app.post("/order", (request, respone) => {
           count: 1,
         });
       }
-      respone.redirect("/");
+      response.redirect("/");
     })
     .catch((err) => console.log(err));
 });
