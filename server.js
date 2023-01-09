@@ -1,5 +1,6 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
+// eslint-disable-next-line prefer-destructuring
+const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 
 const app = express();
