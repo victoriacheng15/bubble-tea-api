@@ -1,6 +1,5 @@
 const express = require("express");
-// eslint-disable-next-line prefer-destructuring
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient } = require("mongodb");
 require("dotenv").config();
 
 const app = express();
@@ -8,21 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const url = process.env.MONGODB_URI;
 
-let db;
-let client;
+const client = new MongoClient(url);
 const dbName = "bubble-tea-api";
-
-const connectDB = async () => {
-  try {
-    client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    db = client.db(dbName);
-    console.log("MongoDB connected");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-connectDB();
+const db = client.db(dbName);
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -53,14 +40,6 @@ app.get("/leaderboard", async (req, res) => {
   }
 });
 
-// this was for sending data of teas and columns to the database's collection named teas
-// app.post('/teas', (request, response) => {
-//   db.collection('teas').insertOne(request.body)
-//     .then(() => {
-//       response.redirect('/');
-//     });
-// });
-
 app.post("/order", async (req, res) => {
   const { tea, topping } = req.body;
   try {
@@ -87,4 +66,10 @@ app.post("/order", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+client.connect((err) => {
+  if (err) {
+    console.error(err);
+  }
+
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
