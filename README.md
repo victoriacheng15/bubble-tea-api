@@ -1,12 +1,21 @@
 # Bubble Tea App
 
+![bubble tea app](./bubble-tea-app.jpg)
+
 This is an app where users can learn about the short history of bubble tea, and submit their favorite combinations. And a leaderboard shows which flavors are loved by the users.
 
-I love bubble tea and am also curious to see what flavors others like as well!
+The user should be able to do:
+
+- [x] Can `drag and drop` one of the teas and one of the toppings
+- [x] Can `click` one of the teas and one of the toppings
+- [x] Submit drink combination to the database
+- [x] Clear the drink choice
+- [x] View the history of bubble tea
+- [x] see the leaderboard of popular drink combinations
 
 [View the site live here](https://bubble-tea.cyclic.app/)
 
-**Tech stack:**
+## Tech stack:
 
 ![Node](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white)
@@ -41,18 +50,7 @@ I love bubble tea and am also curious to see what flavors others like as well!
 
 <hr />
 
-## App function
-
-- Users can drag and drop their favorite tea and topping into the box
-- Dragged tea and topping will be sent to the database
-- The page will check the database to see if the choice:
-  - Is existed, the count will increase by 1
-- Does NOT exist, insert/create the new data
-  - The drag-and-drop box will check choices containing each type of tea and topping
-  - If both choices are teas or toppings, the submit button will not enable
-- Change your mind? You can clear your choices
-
-## Run Locally
+## Installation
 
 Before installing, make sure you have node.js installed on your machine. If it is already installed, follow the steps below.
 
