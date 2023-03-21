@@ -362,11 +362,10 @@ button:disabled {
 footer {
   padding: calc(var(--standard-padding) * 2) 0
     calc(var(--standard-padding) * 0.5) 0;
-  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 0.75rem;
 }
 
 footer a {
@@ -376,5 +375,5 @@ footer a {
 
 ion-icon {
   color: var(--dark-brown);
-  font-size: 16px;
+  font-size: 18px;
 }
