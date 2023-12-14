@@ -1,7 +1,11 @@
-const express = require("express")
-const router = express.Router()
-const {homePage, historyPage, leaderboardPage, updateOrder} = require("../controllers/allControllers")
-
+const express = require("express");
+const router = express.Router();
+const {
+	homePage,
+	historyPage,
+	leaderboardPage,
+	updateOrder,
+} = require("../controllers/allControllers");
 
 router.get("/", homePage);
 router.get("/history", historyPage);
