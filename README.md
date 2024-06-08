@@ -13,7 +13,7 @@ The user should be able to do:
 - [x] View the history of bubble tea
 - [x] see the leaderboard of popular drink combinations
 
-[View the site live here](https://bubble-tea.cyclic.app/)
+[View the site live here](https://bubble-tea-api.onrender.com/)
 
 ## Tech stack:
 
